@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import { FooterContainer } from "./FooterStyles";
+import { FooterContainer } from "./Footer.styles";
 import { applicationName, currentYear, footerLinks } from "../../constants";
 
 const Footer = () => {

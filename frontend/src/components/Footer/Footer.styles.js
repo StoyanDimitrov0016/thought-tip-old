@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const FooterContainer = styled.footer`
   width: 100%;
-  background-color: #0d0d0d;
-  color: #eff0f3;
+  background-color: var(--background-dark);
+  color: var(--text);
   position: fixed;
   left: 0;
   bottom: 0;
@@ -19,7 +19,7 @@ export const FooterContainer = styled.footer`
     margin: 0;
     display: flex;
     justify-content: center;
-    
+
     li {
       margin-right: 20px;
       &:last-child {
@@ -29,20 +29,20 @@ export const FooterContainer = styled.footer`
   }
 
   a {
-    color: #eff0f3;
+    color: inherit;
     text-decoration: none;
     display: inline-block;
     font-weight: 500;
     cursor: pointer;
 
     &:hover {
-      color: #d3d3d3;
+      color: var(--accent);
     }
   }
 
   p {
     font-size: 0.8rem;
-    color: #a0a0a0;
+    color: inherit;
     margin: 0;
   }
 `;
