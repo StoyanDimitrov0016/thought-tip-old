@@ -1,21 +1,13 @@
-import { Link } from "react-router-dom";
-
 import { FooterContainer } from "./Footer.styles";
-import { applicationName, currentYear, footerLinks } from "../../constants";
+import FooterBottomContainer from "./FooterBottomContainer/FooterBottomContainer";
+import FooterNavBar from "./FooterNavBar/FooterNavBar";
 
 const Footer = () => {
   return (
     <FooterContainer>
-      <p>
-        &copy; {currentYear} {applicationName}
-      </p>
-      <ul>
-        {footerLinks.map((link) => (
-          <li key={link.path}>
-            <Link to={link.path}>{link.label}</Link>
-          </li>
-        ))}
-      </ul>
+      <hr />
+      <FooterNavBar />
+      <FooterBottomContainer />
     </FooterContainer>
   );
 };
