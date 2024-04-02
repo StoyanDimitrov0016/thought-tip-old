@@ -2,47 +2,21 @@ import styled from "styled-components";
 
 export const FooterContainer = styled.footer`
   width: 100%;
-  background-color: var(--background-dark);
-  color: var(--text);
-  position: fixed;
-  left: 0;
+  height: fit-content;
+  position: relative;
   bottom: 0;
+  left: 0;
   display: flex;
-  justify-content: center;
-  gap: 10em;
-  min-height: 60px;
+  flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: var(--background);
+  color: var(--text);
 
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-
-    li {
-      margin-right: 20px;
-      &:last-child {
-        margin-right: 0;
-      }
-    }
-  }
-
-  a {
-    color: inherit;
-    text-decoration: none;
-    display: inline-block;
-    font-weight: 500;
-    cursor: pointer;
-
-    &:hover {
-      color: var(--accent);
-    }
-  }
-
-  p {
-    font-size: 0.8rem;
-    color: inherit;
-    margin: 0;
+  hr {
+    width: 100%;
+    background-color: var(--text);
+    margin-bottom: 2em;
   }
 `;
