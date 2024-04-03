@@ -5,13 +5,11 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     trim: true,
-    lowercase: true,
   },
   lastName: {
     type: String,
     required: true,
     trim: true,
-    lowercase: true,
   },
   email: {
     type: String,
@@ -32,25 +30,13 @@ const userSchema = new mongoose.Schema({
     trim: true,
     maxLength: 100,
   },
-  socialMedia: {
-    twitter: { type: String, trim: true },
-    facebook: { type: String, trim: true },
-    linkedIn: { type: String, trim: true },
-    instagram: { type: String, trim: true },
-  },
   followers: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
   following: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-  articles: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Article",
-    },
-  ],
+  createdAt: { type: Date, default: Date.now },
+  articles: [{ type: mongoose.Schema.Types.ObjectId, ref: "Article" }],
 });
+
+//TODO: Add virtual property to the schema for the full name
 
 const User = mongoose.model("User", userSchema);
 
