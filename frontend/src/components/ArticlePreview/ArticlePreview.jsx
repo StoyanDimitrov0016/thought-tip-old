@@ -32,7 +32,7 @@ const ArticlePreview = ({ article }) => {
         </h2>
         <div>
           <p>
-            Author{" "}
+            Author
             <strong>
               <CustomLink to={`/authors/${authorId}`}>{author}</CustomLink>
             </strong>
