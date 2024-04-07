@@ -2,12 +2,11 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 :root {
-  --background-dark: #797872; 
-  --background-light: #f5fdf0; 
-  --primary: #51829B;
-  --secondary: #9BB0C1; 
-  --accent: #F6995C; 
-  --text: #EEEEEE; 
+  --text: #f0f0f0;
+  --background: #111113;
+  --primary: #587d20;
+  --secondary: #4d4d4d;
+  --accent: orange;
 }
 
 * {
@@ -17,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
 }
 
 body {
-  background-color: var(--background-light);
+  background-color: var(--background);
   color: var(--text);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -49,17 +48,13 @@ img, video {
   height: auto;
 }
 
-ul, ol {
-  padding-left: 1.25em;
-}
-
 li {
   margin-bottom: 0.625em;
 }
 
 a {
-  color: var(--accent);
   text-decoration: none;
+  color: var(--text);
 }
 
 a:hover {
@@ -71,17 +66,15 @@ svg {
 }
 
 button {
-  background-color: var(--button-background);
-  color: var(--button-text);
   border: none;
   padding: 0.5em 1em;
   border-radius: 0.25em;
   cursor: pointer;
 }
 
-button:hover {
-  background-color: var(--accent); /* Accent color on hover */
-}
+/* button:hover {
+  background-color: var(--accent);
+} */
 `;
 
 export default GlobalStyle;
