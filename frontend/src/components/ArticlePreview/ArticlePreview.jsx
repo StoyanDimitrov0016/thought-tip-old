@@ -10,7 +10,7 @@ import {
 
 const ArticlePreview = ({ article }) => {
   const {
-    id,
+    _id,
     authorId,
     title,
     author,
@@ -26,7 +26,7 @@ const ArticlePreview = ({ article }) => {
     <ArticleContainer>
       <HeaderContainer>
         <h2>
-          <Link to={`/articles/${id}`} aria-label={`Read more about ${title}`}>
+          <Link to={`/articles/${_id}`} aria-label={`Read more about ${title}`}>
             {title}
           </Link>
         </h2>
@@ -46,7 +46,7 @@ const ArticlePreview = ({ article }) => {
       <SectionContainer aria-labelledby="content-preview">
         <h3 id="content-preview">Preview</h3>
         <CustomLink
-          to={`/articles/${id}`}
+          to={`/articles/${_id}`}
           aria-label={`Read more about ${title}`}
         >
           <p>{contentPreview}</p>
