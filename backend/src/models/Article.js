@@ -9,6 +9,8 @@ const articleSchema = new mongoose.Schema(
       required: true,
       index: true,
     },
+    thumbnail: { type: String },
+    preview: { type: String },
     content: { type: String, required: [true, "Content is required"] },
     publishedDate: { type: Date, default: Date.now },
     avgReadingTime: { type: Number, required: true },
@@ -26,13 +28,13 @@ const articleSchema = new mongoose.Schema(
   }
 );
 
-articleSchema.methods.isUserLiked = function (userId) {
-  return this.likedBy.some((id) => id.equals(userId));
-};
+// articleSchema.methods.isUserLiked = function (userId) {
+//   return this.likedBy.some(id => id.toString() === userId.toString());
+// };
 
-articleSchema.methods.getLikesCount = function (){
-return this.likedBy.length;
-}
+// articleSchema.virtual("likesCount").get(function () {
+//   return this.likedBy.length;
+// });
 
 const Article = mongoose.model("Article", articleSchema);
 
