@@ -14,7 +14,13 @@ async function getAllArticles(req, res) {
 async function getArticleById(req, res) {
   try {
     const articleId = req.params.id;
-    const desiredArticle = await articleService.getArticleById(articleId);
+    const userId = req.user._id;
+
+    const desiredArticle = await articleService.getArticleById(
+      articleId,
+      userId
+    );
+    
     res.json(desiredArticle);
   } catch (error) {
     const errorMessage = errorParser(error);
@@ -24,14 +30,15 @@ async function getArticleById(req, res) {
 
 async function createArticle(req, res) {
   try {
-    // TODO: create function for evaluating the real average reading time
-    // TODO: extract authorId from the request.body
-    const avgReadingTime = 10;
-    const authorId = "660d9741cbf935091239b903";
+    const author = req.user._id;
+    const articleData = req.body;
 
-    const articleData = req.body; // { ...req.body, authorId: req.user._id };
+    const avgReadingTime = Math.ceil(
+      articleData.content.split(" ").length / 238
+    );
+
     articleData.avgReadingTime = avgReadingTime;
-    articleData.authorId = authorId;
+    articleData.author = author;
 
     const newArticle = await articleService.createArticle(articleData);
 
