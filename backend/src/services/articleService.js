@@ -15,17 +15,35 @@ async function createArticle(articleData) {
 }
 
 async function getAllArticles() {
-  const allArticles = await Article.find();
+  const allArticles = await Article.find()
+    .select("-content -likedBy")
+    .populate({
+      path: "author",
+      select: "firstName lastName profilePicture",
+    });
+console.log(allArticles)
   return allArticles;
 }
 
-async function getArticleById(articleId) {
-  //TODO: Return only if the user is liked the article or not, don't return the whole array with OjectIds
-  const desiredArticle = await Article.findById(articleId);
+async function getArticleById(articleId, userId) {
+  const desiredArticle = await Article.findById(articleId)
+    .populate({
+      path: "author",
+      select: "firstName lastName profilePicture",
+    })
+    .lean();
 
   if (!desiredArticle) {
     throw new Error("Cannot find the article");
   }
+
+  const isUserLiked = desiredArticle.likedBy.includes(userId);
+  const likesCount = desiredArticle.likedBy.length;
+
+  desiredArticle.isUserLiked = isUserLiked;
+  desiredArticle.likesCount = likesCount;
+
+  delete desiredArticle.likedBy;
 
   return desiredArticle;
 }
