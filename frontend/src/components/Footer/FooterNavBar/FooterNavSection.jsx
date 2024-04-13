@@ -5,9 +5,9 @@ const FooterNavSection = ({ section }) => {
     <div>
       <h3>{section.category}</h3>
       <ul>
-        {section.links.map((link) => (
-          <li key={link.title}>
-            <Link to={link.path}>{link.title}</Link>
+        {section.paths.map((path) => (
+          <li key={path.title}>
+            <Link to={path.path}>{path.title}</Link>
           </li>
         ))}
       </ul>
