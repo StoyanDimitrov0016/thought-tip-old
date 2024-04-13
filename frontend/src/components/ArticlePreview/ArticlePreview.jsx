@@ -11,11 +11,10 @@ import {
 const ArticlePreview = ({ article }) => {
   const {
     _id,
-    authorId,
-    title,
     author,
-    avgReadingDuration,
-    contentPreview,
+    title,
+    preview,
+    avgReadingTime,
     createdAt,
     topic,
   } = article;
@@ -34,11 +33,13 @@ const ArticlePreview = ({ article }) => {
           <p>
             Author
             <strong>
-              <CustomLink to={`/authors/${authorId}`}>{author}</CustomLink>
+              <CustomLink
+                to={`/authors/${author._id}`}
+              >{`${author.firstName} ${author.lastName}`}</CustomLink>
             </strong>
           </p>
           <p>
-            Average Reading Time <strong>{avgReadingDuration} minutes</strong>
+            Average Reading Time <strong>{avgReadingTime} minutes</strong>
           </p>
         </div>
       </HeaderContainer>
@@ -49,7 +50,7 @@ const ArticlePreview = ({ article }) => {
           to={`/articles/${_id}`}
           aria-label={`Read more about ${title}`}
         >
-          <p>{contentPreview}</p>
+          <p>{preview}</p>
         </CustomLink>
       </SectionContainer>
 
