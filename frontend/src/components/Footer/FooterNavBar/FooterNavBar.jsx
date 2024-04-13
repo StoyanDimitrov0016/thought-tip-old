@@ -1,11 +1,11 @@
 import { FooterNavBarContainer } from "./FooterNavBar.styles";
-import { footerLinks } from "../../../constants";
+import { footerPaths } from "../../../paths/footerPaths";
 import FooterNavSection from "./FooterNavSection";
 
 const FooterNavBar = () => {
   return (
     <FooterNavBarContainer>
-      {footerLinks.map((section) => (
+      {footerPaths.map((section) => (
         <FooterNavSection key={section.category} section={section} />
       ))}
     </FooterNavBarContainer>
