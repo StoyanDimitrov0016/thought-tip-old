@@ -1,4 +1,5 @@
 import articleService from "../services/articleService.js";
+import formatAndCalculateAvgReadingTime from "../utils/calculateAndFormatMinutes.js";
 import { errorParser } from "../utils/errorParser.js";
 
 async function getAllArticles(req, res) {
@@ -20,7 +21,7 @@ async function getArticleById(req, res) {
       articleId,
       userId
     );
-    
+
     res.json(desiredArticle);
   } catch (error) {
     const errorMessage = errorParser(error);
@@ -33,8 +34,8 @@ async function createArticle(req, res) {
     const author = req.user._id;
     const articleData = req.body;
 
-    const avgReadingTime = Math.ceil(
-      articleData.content.split(" ").length / 238
+    const avgReadingTime = formatAndCalculateAvgReadingTime(
+      articleData.content
     );
 
     articleData.avgReadingTime = avgReadingTime;
