@@ -13,7 +13,7 @@ const articleSchema = new mongoose.Schema(
     preview: { type: String },
     content: { type: String, required: [true, "Content is required"] },
     publishedDate: { type: Date, default: Date.now },
-    avgReadingTime: { type: Number, required: true },
+    avgReadingTime: { type: String, required: true },
     topic: {
       type: String,
       required: [true, "Article should be related to at least one topic"],
@@ -27,14 +27,6 @@ const articleSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
-
-// articleSchema.methods.isUserLiked = function (userId) {
-//   return this.likedBy.some(id => id.toString() === userId.toString());
-// };
-
-// articleSchema.virtual("likesCount").get(function () {
-//   return this.likedBy.length;
-// });
 
 const Article = mongoose.model("Article", articleSchema);
 
