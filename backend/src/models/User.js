@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import { mongoose } from "mongoose";
 
 const userSchema = new mongoose.Schema({
   firstName: {
@@ -24,6 +24,8 @@ const userSchema = new mongoose.Schema({
   },
   profilePicture: {
     type: String,
+    default:
+      "https://t4.ftcdn.net/jpg/04/10/43/77/360_F_410437733_hdq4Q3QOH9uwh0mcqAhRFzOKfrCR24Ta.jpg",
   },
   bio: {
     type: String,
@@ -34,6 +36,7 @@ const userSchema = new mongoose.Schema({
   following: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
   createdAt: { type: Date, default: Date.now },
   articles: [{ type: mongoose.Schema.Types.ObjectId, ref: "Article" }],
+  favArticles: [{ type: mongoose.Schema.Types.ObjectId, ref: "Article" }],
 });
 
 //TODO: Add virtual property to the schema for the full name
