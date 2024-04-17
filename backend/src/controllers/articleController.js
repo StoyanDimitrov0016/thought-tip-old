@@ -1,4 +1,5 @@
 import articleService from "../services/articleService.js";
+import { userService } from "../services/userService.js";
 import formatAndCalculateAvgReadingTime from "../utils/calculateAndFormatMinutes.js";
 import { errorParser } from "../utils/errorParser.js";
 
