@@ -6,9 +6,9 @@ import {
   HeaderContainer,
   SectionContainer,
   CustomLink,
-} from "./ArticlePreview.styles";
+} from "./article-preview-card.styles";
 
-const ArticlePreview = ({ article }) => {
+const ArticlePreviewCard = ({ article }) => {
   const {
     _id,
     author,
@@ -19,7 +19,7 @@ const ArticlePreview = ({ article }) => {
     topic,
   } = article;
 
-  const creationDate = new Date(createdAt).toLocaleDateString();
+  const publishDate = new Date(createdAt).toLocaleDateString();
 
   return (
     <ArticleContainer>
@@ -39,7 +39,7 @@ const ArticlePreview = ({ article }) => {
             </strong>
           </p>
           <p>
-            Average Reading Time <strong>{avgReadingTime} minutes</strong>
+            Average Reading Time <strong>{avgReadingTime}</strong>
           </p>
         </div>
       </HeaderContainer>
@@ -58,11 +58,11 @@ const ArticlePreview = ({ article }) => {
         <p>
           Topic <strong>{topic}</strong>
         </p>
-        <time dateTime={createdAt}>Published on {creationDate}</time>
+        <time dateTime={createdAt}>Published on {publishDate}</time>
         <button>Add to Favs</button>
       </FooterContainer>
     </ArticleContainer>
   );
 };
 
-export default ArticlePreview;
+export default ArticlePreviewCard;
