@@ -1,14 +1,12 @@
 import { Link } from "react-router-dom";
 
 import { NavigationBarContainer } from "./NavigationBar.styles";
-import SearchBar from "../SearchBar/SearchBar";
-import endpoints from "../../../../endpoints";
 import { useUserContext } from "../../../contexts/UserContext";
 import allPaths from "../../../paths/allPaths";
+import SearchBar from "../../forms/search-bar/SearchBar";
 
 const NavigationBar = () => {
   const { user } = useUserContext();
-  const onSearch = () => {};
 
   return (
     <NavigationBarContainer>
@@ -19,7 +17,7 @@ const NavigationBar = () => {
           </Link>
         </li>
         <li>
-          <SearchBar onSearch={onSearch} />
+          <SearchBar />
         </li>
 
         {user ? (
@@ -36,7 +34,7 @@ const NavigationBar = () => {
           </>
         ) : (
           <li>
-            <Link to="/users/authenticate">Sign In/Up</Link>
+            <Link to={allPaths.authenticateRedirect}>Sign In/Up</Link>
           </li>
         )}
       </ul>
