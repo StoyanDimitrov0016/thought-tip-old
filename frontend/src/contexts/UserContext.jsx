@@ -1,11 +1,13 @@
 import { createContext, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import authService from "../services/authService";
-
+import storage from "../services/userStorage";
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(() => {
+    return storage.getUser();
+  });
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState(null);
 
@@ -33,7 +35,7 @@ export const UserProvider = ({ children }) => {
 
     try {
       const result = await authService.signIn(data);
-
+      console.log(result);
       setUser({ ...result });
       navigate("/");
     } catch (error) {
