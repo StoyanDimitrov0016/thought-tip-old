@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-
-import ArticlePreview from "../../components/ArticlePreview/ArticlePreview";
+import { StyledHomeSection } from "./home-view.styles";
 import articleService from "../../services/articleService";
+import ArticlePreviewCard from "../../components/article-preview-card/ArticlePreviewCard";
 
 const HomeView = () => {
   const [articles, setArticles] = useState([]);
@@ -11,20 +11,17 @@ const HomeView = () => {
       const fetchedArticles = await articleService.getAllArticles();
       setArticles(fetchedArticles);
     };
-
     loadArticles();
   }, []);
 
   return (
-    <main>
-      <section>
-        {articles &&
-          articles.length > 0 &&
-          articles.map((article) => (
-            <ArticlePreview key={article._id} article={article} />
-          ))}
-      </section>
-    </main>
+    <StyledHomeSection>
+      {articles &&
+        articles.length > 0 &&
+        articles.map((article) => (
+          <ArticlePreviewCard key={article._id} article={article} />
+        ))}
+    </StyledHomeSection>
   );
 };
 
